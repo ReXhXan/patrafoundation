@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFocusAreasModal();
   initProgrammesModal();
   initGetInvolvedModal();
+  initMobileInteractions();
 });
 
 /* ==========================================================================
@@ -479,3 +480,55 @@ function initGetInvolvedModal() {
     }, 4500);
   }
 }
+
+/* ==========================================================================
+   Mobile Interactive Enhancements (Touch Dots, Haptics & Sync)
+   ========================================================================== */
+function initMobileInteractions() {
+  const focusGrid = document.querySelector('.focus-grid');
+  const dots = document.querySelectorAll('.scroll-dot');
+
+  if (focusGrid && dots.length) {
+    // Update active dot on scroll
+    focusGrid.addEventListener('scroll', () => {
+      const scrollLeft = focusGrid.scrollLeft;
+      const cardWidth = focusGrid.firstElementChild ? focusGrid.firstElementChild.offsetWidth + 16 : 280;
+      const activeIndex = Math.min(Math.round(scrollLeft / cardWidth), dots.length - 1);
+
+      dots.forEach((dot, idx) => {
+        if (idx === activeIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }, { passive: true });
+
+    // Tap dot to scroll to card
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        const cardWidth = focusGrid.firstElementChild ? focusGrid.firstElementChild.offsetWidth + 16 : 280;
+        focusGrid.scrollTo({
+          left: idx * cardWidth,
+          behavior: 'smooth'
+        });
+      });
+    });
+  }
+
+  // Ripple feedback for buttons
+  const buttons = document.querySelectorAll('.btn');
+  buttons.forEach(btn => {
+    btn.addEventListener('touchstart', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const touch = e.touches[0];
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      ripple.style.left = `${touch.clientX - rect.left - 30}px`;
+      ripple.style.top = `${touch.clientY - rect.top - 30}px`;
+      btn.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+    }, { passive: true });
+  });
+}
+

@@ -2426,3 +2426,754 @@ ul, ol {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   MOBILE EXPERIENCE — Rich Interactive Enhancements
+   Max 768px: Visual energy, touch interactions, animated typography
+   ========================================================================== */
+
+/* --- Animated Gradient Text Highlight (mobile hero) --- */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes highlightReveal {
+  from { background-size: 0% 100%; }
+  to   { background-size: 100% 100%; }
+}
+
+@keyframes floatBob {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1);   opacity: 1; }
+  50%       { transform: scale(1.5); opacity: 0.6; }
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(32px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes rippleExpand {
+  to { transform: scale(4); opacity: 0; }
+}
+
+@keyframes borderPulse {
+  0%, 100% { border-color: var(--color-border); }
+  50%       { border-color: var(--color-terracotta); box-shadow: 0 0 0 3px rgba(200,90,50,0.12); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@media (max-width: 768px) {
+
+  /* ----------------------------------------------------------------
+     Mobile Header & Brand (Swiss Precision)
+     ---------------------------------------------------------------- */
+  .site-header {
+    background-color: rgba(250, 248, 245, 0.98);
+    border-bottom: 2px solid var(--color-charcoal);
+  }
+
+  .nav-container {
+    height: 68px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .brand-logo-img {
+    height: 38px;
+  }
+
+  .brand-text {
+    display: none; /* Hide duplicate text when logo has the full text */
+  }
+
+  .mobile-toggle {
+    display: flex;
+    width: 44px;
+    height: 44px;
+    background: #fff;
+    border: 2px solid var(--color-charcoal);
+    border-radius: 4px;
+    box-shadow: 2px 2px 0 var(--color-charcoal);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .mobile-toggle:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0 0 0 var(--color-charcoal);
+  }
+
+  .nav-actions .btn-open-involved {
+    display: none; /* keep clean on header, accessible via mobile menu and floating FAB */
+  }
+
+  /* ----------------------------------------------------------------
+     Mobile Hero — Swiss & Brutalist Fusion
+     ---------------------------------------------------------------- */
+  .hero-section {
+    padding-top: 24px;
+    padding-bottom: 0;
+    overflow: hidden;
+    background: var(--color-ivory);
+    border-bottom: 2px solid var(--color-charcoal);
+  }
+
+  .hero-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hero-content {
+    padding-bottom: 28px;
+    animation: slideInUp 0.6s cubic-bezier(0.16,1,0.3,1) both;
+  }
+
+  /* Swiss/Brutalist Meta Badge */
+  .hero-meta-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px;
+    background: #FFFFFF;
+    border: 2px solid var(--color-charcoal);
+    border-radius: 4px;
+    box-shadow: 3px 3px 0 var(--color-forest);
+    font-family: 'Space Grotesk', var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--color-forest);
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+  }
+
+  .hero-meta-badge .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background-color: var(--color-terracotta);
+    animation: pulseDot 1.8s ease-in-out infinite;
+  }
+
+  .hero-meta-badge .badge-tag {
+    background: var(--color-forest);
+    color: #FFF;
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* Brutalist & Swiss Bold Hero Title */
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.4rem, 10.5vw, 3.4rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--color-charcoal);
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-title em {
+    display: block;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-forest);
+    position: relative;
+    letter-spacing: -0.02em;
+    margin-top: 4px;
+  }
+
+  /* High-Impact Word Highlights */
+  .hero-lead {
+    font-size: 1.05rem;
+    line-height: 1.68;
+    color: var(--color-charcoal-light);
+    margin-bottom: 1.8rem;
+    font-weight: 450;
+  }
+
+  .hero-lead .hl {
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    border: 1px solid var(--color-charcoal);
+    display: inline-block;
+    line-height: 1.2;
+    margin: 1px 0;
+  }
+
+  .hero-lead .hl-forest {
+    background-color: var(--color-sage-soft);
+    color: var(--color-forest-dark);
+    box-shadow: 2px 2px 0 var(--color-forest);
+  }
+
+  .hero-lead .hl-terracotta {
+    background-color: #FDEEE9;
+    color: var(--color-terracotta);
+    box-shadow: 2px 2px 0 var(--color-terracotta);
+  }
+
+  .hero-lead .hl-sand {
+    background-color: #FEF7DA;
+    color: #6B4E1B;
+    box-shadow: 2px 2px 0 #9E7D2B;
+  }
+
+  /* Neo-Brutalist CTA Buttons */
+  .hero-cta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+    padding: 16px 24px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border-radius: 4px;
+    border: 2px solid var(--color-charcoal);
+    box-shadow: 4px 4px 0 var(--color-charcoal);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .hero-cta-group .btn-primary {
+    background-color: var(--color-forest);
+    color: #FFF;
+    border-color: var(--color-charcoal);
+  }
+
+  .hero-cta-group .btn-secondary {
+    background-color: #FFFFFF;
+    color: var(--color-charcoal);
+    border-color: var(--color-charcoal);
+  }
+
+  .hero-cta-group .btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--color-charcoal);
+  }
+
+  .hero-cta-group .btn .btn-arrow {
+    font-size: 1.2rem;
+    transition: transform 0.2s ease;
+  }
+
+  /* Full-width image, taller, cinematic on mobile with crisp border */
+  .hero-visual {
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    margin-right: -20px;
+    max-width: none;
+    position: relative;
+    border-top: 2px solid var(--color-charcoal);
+  }
+
+  .hero-image-frame {
+    border-radius: 0;
+    aspect-ratio: 16 / 11;
+    box-shadow: none;
+  }
+
+  /* Floating card redesigned with brutalist flair — overlaid on image */
+  .hero-floating-card {
+    position: absolute !important;
+    bottom: 16px !important;
+    left: 14px !important;
+    right: 14px !important;
+    margin: 0 !important;
+    background: #FFFFFF !important;
+    border: 2px solid var(--color-charcoal) !important;
+    box-shadow: 4px 4px 0 var(--color-charcoal) !important;
+    border-radius: 4px !important;
+    padding: 14px 16px !important;
+    z-index: 10;
+  }
+
+  .hero-floating-card .hero-floating-text h4 {
+    color: var(--color-charcoal) !important;
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-family: 'Space Grotesk', var(--font-sans);
+  }
+  .hero-floating-card .hero-floating-text p {
+    color: var(--color-muted) !important;
+    font-size: 0.8rem;
+  }
+  .hero-floating-badge {
+    background-color: var(--color-forest) !important;
+    color: #fff !important;
+    font-size: 0.7rem !important;
+    font-weight: 700;
+    border-radius: 3px !important;
+    padding: 4px 8px !important;
+  }
+
+  /* ----------------------------------------------------------------
+     Mobile Pillars — Swiss Marquee Ribbon
+     ---------------------------------------------------------------- */
+  .hero-pillars {
+    display: none; /* replaced by mobile-pillars-ticker */
+  }
+
+  .mobile-pillars-ticker {
+    display: flex !important;
+    overflow: hidden;
+    border-top: 2px solid var(--color-charcoal);
+    border-bottom: 2px solid var(--color-charcoal);
+    padding: 12px 0;
+    margin-top: 16px;
+    background: #FFFAEE;
+    position: relative;
+  }
+
+  .mobile-pillars-ticker::before,
+  .mobile-pillars-ticker::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 24px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .mobile-pillars-ticker::before {
+    left: 0;
+    background: linear-gradient(to right, #FFFAEE, transparent);
+  }
+  .mobile-pillars-ticker::after {
+    right: 0;
+    background: linear-gradient(to left, #FFFAEE, transparent);
+  }
+
+  .pillars-track {
+    display: flex;
+    gap: 0;
+    animation: marqueeScroll 18s linear infinite;
+    white-space: nowrap;
+  }
+
+  .pillar-tick-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 18px;
+    font-family: 'Space Grotesk', monospace, sans-serif;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-forest);
+  }
+
+  .pillar-tick-item::before {
+    content: "●";
+    font-size: 0.5rem;
+    color: var(--color-terracotta);
+  }
+
+  /* ----------------------------------------------------------------
+     Mobile Focus Cards — Swiss Carousel with Brutalist Cards
+     ---------------------------------------------------------------- */
+  .focus-grid {
+    display: flex !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 16px;
+    padding: 12px 20px 24px;
+    margin-left: -20px;
+    margin-right: -20px;
+    scrollbar-width: none;
+    grid-template-columns: unset;
+  }
+  .focus-grid::-webkit-scrollbar { display: none; }
+
+  .focus-card {
+    flex: 0 0 82vw;
+    scroll-snap-align: start;
+    min-height: 380px;
+    border-radius: 4px;
+    border: 2px solid var(--color-charcoal);
+    box-shadow: 5px 5px 0 var(--color-forest);
+    transform: none !important;
+    background: #FFFFFF;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .focus-card:active {
+    transform: translate(2px, 2px) !important;
+    box-shadow: 2px 2px 0 var(--color-forest);
+  }
+
+  .focus-card-num {
+    font-family: 'Space Grotesk', monospace, sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 0.76rem !important;
+    color: var(--color-forest) !important;
+    background: #FFFAEE;
+    border: 1px solid var(--color-charcoal);
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  .focus-card-title {
+    font-family: var(--font-serif);
+    font-size: 1.45rem;
+    font-weight: 600;
+    line-height: 1.18;
+    color: var(--color-charcoal);
+    margin-top: 8px;
+  }
+
+  .focus-card-desc {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+  }
+
+  /* Always show background image on mobile (higher opacity) */
+  .focus-card::before {
+    opacity: 0.35 !important;
+    animation-duration: 12s !important;
+  }
+
+  /* Active/tapped card — full reveal on mobile */
+  .focus-card.tapped::before  { opacity: 1 !important; }
+  .focus-card.tapped .focus-card-overlay { opacity: 0.9 !important; background: var(--color-forest) !important; }
+  .focus-card.tapped .focus-card-title   { color: var(--color-white) !important; }
+  .focus-card.tapped .focus-card-desc    { color: rgba(255,255,255,0.92) !important; }
+  .focus-card.tapped .focus-card-num     { background: var(--color-terracotta) !important; color: #FFF !important; border-color: #FFF !important; }
+  .focus-card.tapped .focus-card-icon    { background: rgba(255,255,255,0.2) !important; color:#fff !important; }
+  .focus-card.tapped .focus-card-footer  { border-top-color: rgba(255,255,255,0.3) !important; color:#fff !important; }
+
+  /* Swipe hint indicator (Swiss badge style) */
+  .focus-swipe-hint {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Space Grotesk', var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-forest);
+    background: var(--color-sage-soft);
+    border: 1px solid var(--color-charcoal);
+    border-radius: 3px;
+    padding: 8px 14px;
+    margin: 10px auto 0;
+    max-width: fit-content;
+  }
+  .focus-swipe-hint svg {
+    width: 14px; height: 14px;
+    animation: floatBob 1.6s ease-in-out infinite;
+  }
+
+  /* Scroll progress dots for focus cards */
+  .focus-scroll-dots {
+    display: flex !important;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .scroll-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background-color: #D6D0C4;
+    border: 1px solid var(--color-charcoal);
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+
+  .scroll-dot.active {
+    width: 28px;
+    border-radius: 2px;
+    background-color: var(--color-terracotta);
+  }
+
+  /* ----------------------------------------------------------------
+     Mobile Impact Cards — High-Voltage Brutalist Stat Blocks
+     ---------------------------------------------------------------- */
+  .impact-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px;
+  }
+
+  .impact-card {
+    padding: 20px 16px;
+    background: #FFFFFF;
+    border: 2px solid var(--color-charcoal);
+    border-radius: 4px;
+    box-shadow: 4px 4px 0 var(--color-charcoal);
+    transition: transform 0.15s ease;
+  }
+
+  .impact-card:nth-child(even) {
+    box-shadow: 4px 4px 0 var(--color-terracotta);
+  }
+
+  .impact-number {
+    font-family: 'Space Grotesk', var(--font-sans);
+    font-size: clamp(2.6rem, 11vw, 3.4rem);
+    font-weight: 700;
+    color: var(--color-forest);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .impact-number-accent {
+    font-family: 'Space Grotesk', var(--font-sans);
+    color: var(--color-terracotta);
+    font-weight: 700;
+    font-size: 1.8rem;
+  }
+
+  .impact-label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-family: 'Space Grotesk', var(--font-sans);
+    color: var(--color-charcoal);
+    margin-top: 6px;
+  }
+
+  .impact-desc {
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: var(--color-muted);
+    margin-top: 4px;
+  }
+
+  .impact-status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    font-family: 'Space Grotesk', monospace, sans-serif;
+    color: var(--color-forest);
+    background: var(--color-sage-soft);
+    padding: 2px 6px;
+    border: 1px solid var(--color-charcoal);
+    border-radius: 2px;
+  }
+
+  /* ----------------------------------------------------------------
+     Mobile Programmes — Swiss Data Rows with Brutalist Outlines
+     ---------------------------------------------------------------- */
+  .programme-row {
+    grid-template-columns: 46px 1fr 32px !important;
+    gap: 12px;
+    padding: 18px 16px;
+    background: #FFFFFF;
+    border: 2px solid var(--color-charcoal);
+    border-radius: 4px;
+    box-shadow: 3px 3px 0 var(--color-charcoal);
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .programme-row:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--color-charcoal);
+    background: #FFFAEE !important;
+  }
+
+  .programme-num {
+    font-family: 'Space Grotesk', monospace, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-terracotta);
+  }
+
+  .programme-name {
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+    color: var(--color-charcoal);
+    line-height: 1.25;
+  }
+
+  .programme-theme {
+    display: none;
+  }
+
+  .programme-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-forest);
+    font-weight: 700;
+  }
+
+  /* ----------------------------------------------------------------
+     Mobile Section Headings — High-Contrast Swiss Eyebrows
+     ---------------------------------------------------------------- */
+  .eyebrow {
+    font-family: 'Space Grotesk', var(--font-sans);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    font-size: 0.76rem;
+    color: var(--color-forest);
+    background: var(--color-sage-soft);
+    border: 1px solid var(--color-charcoal);
+    padding: 4px 10px;
+    border-radius: 3px;
+    display: inline-flex;
+    margin-bottom: 12px;
+  }
+  .eyebrow::before, .eyebrow::after {
+    display: none !important;
+  }
+
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 8vw, 2.7rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--color-charcoal);
+  }
+
+  /* ----------------------------------------------------------------
+     Mobile Floating Action Button — Neo-Brutalist Sticky Pill
+     ---------------------------------------------------------------- */
+  .mobile-fab {
+    display: flex !important;
+    position: fixed;
+    bottom: 20px;
+    right: 16px;
+    z-index: 990;
+    background: var(--color-terracotta);
+    color: #FFFFFF;
+    border: 2px solid var(--color-charcoal);
+    border-radius: 4px;
+    padding: 14px 22px;
+    font-family: 'Space Grotesk', var(--font-sans);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0 var(--color-charcoal);
+    cursor: pointer;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-fab:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--color-charcoal);
+  }
+
+  .mobile-fab svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* ----------------------------------------------------------------
+     Mobile Research Section — Tighter spacing
+     ---------------------------------------------------------------- */
+  .research-item {
+    gap: 14px;
+    padding: 20px 18px;
+    border-radius: 10px;
+  }
+
+  .research-item-num {
+    font-size: 1.4rem;
+    min-width: 36px;
+  }
+
+  /* ----------------------------------------------------------------
+     Mobile Update Cards — Horizontal swipe
+     ---------------------------------------------------------------- */
+  .updates-grid {
+    display: flex !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 16px;
+    padding-bottom: 12px;
+    scrollbar-width: none;
+    grid-template-columns: unset !important;
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .updates-grid::-webkit-scrollbar { display: none; }
+
+  .update-card {
+    flex: 0 0 80vw;
+    scroll-snap-align: start;
+  }
+
+  /* ----------------------------------------------------------------
+     Mobile Intro Collage — Simpler stack
+     ---------------------------------------------------------------- */
+  .intro-img-secondary {
+    position: static !important;
+    width: 100% !important;
+    margin-top: 12px;
+    border: none !important;
+    border-top: 3px solid var(--color-terracotta) !important;
+    box-shadow: var(--shadow-md) !important;
+  }
+
+  .intro-geo-badge {
+    position: static;
+    display: inline-flex;
+    margin-top: 14px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* ----------------------------------------------------------------
+     Mobile Nav — Better mobile drawer
+     ---------------------------------------------------------------- */
+  .mobile-drawer {
+    max-width: 100%;
+    padding: 84px 28px 40px;
+  }
+
+  .mobile-nav-link {
+    font-size: 1.4rem;
+    padding: 10px 0;
+  }
+
+} /* end @media 768px */
+
+/* Desktop defaults: hide mobile-only widgets */
+@media (min-width: 769px) {
+  .focus-swipe-hint,
+  .focus-scroll-dots,
+  .mobile-pillars-ticker,
+  .mobile-fab {
+    display: none !important;
+  }
+}
+
