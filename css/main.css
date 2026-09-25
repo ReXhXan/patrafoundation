@@ -3137,3 +3137,368 @@ ul, ol {
   }
 }
 
+/* ==========================================================================
+   MOBILE UX REFINEMENTS — Touch ergonomics, spacing, overflow, readability
+   ========================================================================== */
+@media (max-width: 768px) {
+
+  /* --- Section spacing: tighter on mobile --- */
+  .section {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  /* --- Section header row: stack vertically, right-side text hidden --- */
+  .section-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .section-header-row .header-right {
+    display: none;
+  }
+  .section-header-row .header-right:has(.btn) {
+    display: block;
+    width: 100%;
+  }
+  .section-header-row .header-right .btn {
+    width: 100%;
+  }
+
+  /* --- Intro pillar cards: single column on narrow screens --- */
+  .intro-pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* --- Story collage: stack photos vertically, remove complex grid --- */
+  .story-collage-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 14px;
+  }
+  .story-photo-card.tall {
+    grid-row: auto;
+    aspect-ratio: 4 / 3.2;
+  }
+  .story-photo-card.standard {
+    aspect-ratio: 4 / 3;
+  }
+
+  /* --- Story quote box: tighter padding --- */
+  .story-quote-box {
+    padding: 20px;
+  }
+  .story-quote-box blockquote {
+    font-size: 1.05rem;
+  }
+
+  /* --- Climate hero: shorter min-height, tighter padding --- */
+  .climate-card-hero {
+    min-height: 380px;
+  }
+  .climate-hero-content {
+    padding: 28px 20px;
+  }
+  .climate-hero-content p {
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+  }
+  .climate-badges-row {
+    gap: 8px;
+  }
+  .climate-badge {
+    font-size: 0.72rem;
+    padding: 6px 12px;
+  }
+
+  /* --- Director card: center photo, stack content --- */
+  .director-card {
+    padding: 24px;
+    gap: 28px;
+  }
+  .director-photo-wrap {
+    max-width: 240px;
+    margin: 0 auto;
+  }
+  .director-content {
+    text-align: left;
+  }
+  .director-content h3 {
+    font-size: 1.6rem;
+  }
+  .director-quote {
+    font-size: 1.05rem;
+    padding-left: 16px;
+  }
+  .director-credentials {
+    gap: 8px;
+  }
+  .credential-tag {
+    font-size: 0.7rem;
+    padding: 5px 10px;
+  }
+
+  /* --- CTA section: tighter spacing, stacked buttons --- */
+  .cta-content-wrap p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  .cta-pathways-grid {
+    gap: 14px;
+    margin-bottom: 2rem;
+  }
+  .cta-pathway-card {
+    padding: 20px 16px;
+  }
+  .cta-pathway-card h4 {
+    font-size: 1.1rem;
+  }
+  .cta-btn-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cta-btn-group .btn {
+    width: 100%;
+  }
+
+  /* --- Footer: single column, tighter spacing --- */
+  .footer-top-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+  .footer-brand .brand-logo-img {
+    height: 40px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    text-align: left;
+  }
+  .footer-bottom-links {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  /* --- Modal: full-width, scrollable, tighter padding --- */
+  .modal-dialog-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+  .modal-container {
+    max-width: 100%;
+    max-height: 92vh;
+    border-radius: 14px 14px 0 0;
+    transform: translateY(60px);
+  }
+  .modal-dialog-overlay.active .modal-container {
+    transform: translateY(0);
+  }
+  .modal-header {
+    padding: 20px 20px 16px;
+  }
+  .modal-header h3 {
+    font-size: 1.4rem;
+    padding-right: 20px;
+  }
+  .modal-body {
+    padding: 20px;
+  }
+  .modal-body img {
+    max-height: 180px;
+  }
+
+  /* --- Modal form: stack fields, larger touch targets --- */
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .form-input, .form-select, .form-textarea {
+    padding: 14px 16px;
+    font-size: 1rem;
+  }
+  .form-label {
+    font-size: 0.78rem;
+  }
+  #involvedForm > div:last-child {
+    flex-direction: column;
+    gap: 14px;
+    align-items: stretch;
+  }
+  #involvedForm > div:last-child .btn {
+    width: 100%;
+  }
+  #involvedForm > div:last-child span {
+    font-size: 0.72rem;
+    text-align: center;
+  }
+
+  /* --- Toast: full-width bottom, above FAB --- */
+  .toast-notice {
+    bottom: 80px;
+    right: 16px;
+    left: 16px;
+    padding: 14px 20px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    transform: translateY(120px);
+  }
+
+  /* --- FAB: smaller, less intrusive, avoid overlap --- */
+  .mobile-fab {
+    padding: 12px 18px;
+    font-size: 0.8rem;
+    bottom: 16px;
+    right: 16px;
+    box-shadow: 3px 3px 0 var(--color-charcoal);
+  }
+
+  /* --- Hero scroll cue: hide on mobile (no room) --- */
+  .hero-scroll-cue {
+    display: none;
+  }
+
+  /* --- Hero floating card: ensure text doesn't overflow --- */
+  .hero-floating-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .hero-floating-card .hero-floating-badge {
+    align-self: flex-start;
+  }
+
+  /* --- Partners section: already 1-col, tighten card --- */
+  .partner-category-card {
+    padding: 24px 20px;
+  }
+  .partner-cat-title {
+    font-size: 1.2rem;
+  }
+  .partner-cat-desc {
+    font-size: 0.82rem;
+    margin-bottom: 16px;
+  }
+  .partner-placeholder-item {
+    font-size: 0.76rem;
+    padding: 10px 12px;
+  }
+
+  /* --- Update cards: tighter content --- */
+  .update-card-content {
+    padding: 18px;
+  }
+  .update-title {
+    font-size: 1.15rem;
+  }
+  .update-excerpt {
+    font-size: 0.82rem;
+  }
+
+  /* --- Research items: tighter --- */
+  .research-item-content h4 {
+    font-size: 1.1rem;
+  }
+  .research-item-content p {
+    font-size: 0.82rem;
+  }
+
+  /* --- Intro section: tighter lead --- */
+  .intro-lead-para {
+    font-size: 1.05rem;
+    margin-bottom: 1.2rem;
+  }
+
+  /* --- Focus card body: ensure desc doesn't get cut off --- */
+  .focus-card {
+    min-height: 360px;
+  }
+  .focus-card-desc {
+    -webkit-line-clamp: 5;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* --- Prevent horizontal overflow from any element --- */
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* --- Mobile drawer: closer to top, safe-area padding --- */
+  .mobile-drawer {
+    padding-top: 80px;
+    padding-bottom: env(safe-area-inset-bottom, 40px);
+  }
+
+  /* --- CTA pathway cards: brutalist touch feedback --- */
+  .cta-pathway-card:active {
+    transform: translate(2px, 2px);
+  }
+
+  /* --- Partner cards: brutalist touch feedback --- */
+  .partner-category-card:active {
+    transform: translate(2px, 2px);
+  }
+
+  /* --- Update cards: brutalist touch feedback --- */
+  .update-card:active {
+    transform: translate(2px, 2px);
+  }
+
+  /* --- Ripple effect for buttons --- */
+  .btn {
+    position: relative;
+    overflow: hidden;
+  }
+  .ripple {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+    animation: rippleExpand 0.6s ease-out forwards;
+  }
+}
+
+/* --- Very small screens (≤400px): further tightening --- */
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  .section-title {
+    font-size: 1.75rem;
+  }
+  .hero-meta-badge {
+    font-size: 0.65rem;
+    padding: 5px 10px;
+  }
+  .hero-meta-badge .badge-tag {
+    display: none;
+  }
+  .focus-card {
+    flex: 0 0 88vw;
+    min-height: 340px;
+  }
+  .update-card {
+    flex: 0 0 85vw;
+  }
+  .nav-container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .mobile-fab {
+    padding: 10px 16px;
+    font-size: 0.75rem;
+  }
+}
+

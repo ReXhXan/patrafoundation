@@ -250,6 +250,7 @@ function initFocusAreasModal() {
   const modalList = document.getElementById('modalList');
   const closeBtn = document.getElementById('modalCloseBtn');
   const cards = document.querySelectorAll('.focus-card');
+  const focusGrid = document.querySelector('.focus-grid');
 
   if (!modal || !cards.length) return;
 
@@ -277,9 +278,26 @@ function initFocusAreasModal() {
   cards.forEach(card => {
     card.addEventListener('click', () => {
       const id = card.getAttribute('data-focus-id');
+
+      // On mobile (≤768px), first tap reveals the card; second tap opens the modal
+      if (window.innerWidth <= 768 && !card.classList.contains('tapped')) {
+        // Clear any previously tapped card
+        cards.forEach(c => c.classList.remove('tapped'));
+        card.classList.add('tapped');
+        return;
+      }
+
+      card.classList.remove('tapped');
       openFocusModal(id);
     });
   });
+
+  // Clear tapped state when the carousel scrolls (user moved to another card)
+  if (focusGrid) {
+    focusGrid.addEventListener('scroll', () => {
+      cards.forEach(c => c.classList.remove('tapped'));
+    }, { passive: true });
+  }
 
   const closeModal = () => {
     modal.classList.remove('active');
