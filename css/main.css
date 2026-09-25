@@ -2387,46 +2387,6 @@ ul, ol {
   }
 }
 
-@media (max-width: 640px) {
-  .focus-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .impact-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .programme-row {
-    grid-template-columns: 48px 1fr 40px;
-    gap: 12px;
-  }
-  .programme-theme {
-    display: none;
-  }
-
-  .hero-pillars {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .intro-pillars-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-top-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-floating-card {
-    position: static;
-    margin-top: 16px;
-  }
-
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* ==========================================================================
    MOBILE EXPERIENCE — Rich Interactive Enhancements
    Max 768px: Visual energy, touch interactions, animated typography
